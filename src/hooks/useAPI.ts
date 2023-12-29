@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { DependencyList, useEffect, useState } from 'react';
 
 interface useAPIArgs<T, K> {
     requestFunction: (data: T) => Promise<K>;
     requestData: T;
     isReady?: boolean;
+    dependencies?: DependencyList;
+    successCallBack?: (data: K) => void;
 }
 
 export const useAPI = <T, K>({
     requestData,
     requestFunction,
     isReady,
+    dependencies = [],
+    successCallBack,
 }: useAPIArgs<T, K>) => {
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState<K>();
@@ -20,6 +24,7 @@ export const useAPI = <T, K>({
             requestFunction(data)
                 ?.then((response: K) => {
                     resolve(response);
+                    successCallBack?.(response);
                 })
                 ?.catch((error: K) => {
                     reject(error);
@@ -34,7 +39,7 @@ export const useAPI = <T, K>({
         if (isReady) {
             request(requestData).then((res) => setResult(res));
         }
-    }, [isReady]);
+    }, [isReady, ...dependencies]);
 
     return { request, loading, result };
 };

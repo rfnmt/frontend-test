@@ -4,9 +4,11 @@ import { VendorDetails } from '../../types';
 import Styles from './VendorCard.module.scss';
 import { formatNumberWithCommas, toFa } from '@/utils';
 import Rate from '../Rate';
+import { CSSProperties } from 'react';
 
 interface Props extends VendorDetails {
     className?: string;
+    style?: CSSProperties;
 }
 
 const getDeliveryFee = (fee: number) =>
@@ -14,6 +16,7 @@ const getDeliveryFee = (fee: number) =>
 
 export default function VendorCard({
     className,
+    style,
     logo,
     countReview,
     backgroundImage,
@@ -24,7 +27,7 @@ export default function VendorCard({
     deliveryTime,
 }: Props) {
     return (
-        <div className={clsx('p-2', className)}>
+        <div className={clsx('p-2', className)} style={style}>
             <div className='relative'>
                 <Image
                     src={backgroundImage}
