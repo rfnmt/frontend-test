@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 interface useAPIArgs<T, K> {
     requestFunction: (data: T) => Promise<K>;
     requestData: T;
-    fireOnLoad?: boolean;
+    isReady?: boolean;
 }
 
 export const useAPI = <T, K>({
     requestData,
     requestFunction,
-    fireOnLoad,
+    isReady,
 }: useAPIArgs<T, K>) => {
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState<K>();
@@ -31,10 +31,10 @@ export const useAPI = <T, K>({
     }
 
     useEffect(() => {
-        if (fireOnLoad) {
+        if (isReady) {
             request(requestData).then((res) => setResult(res));
         }
-    }, [fireOnLoad]);
+    }, [isReady]);
 
     return { request, loading, result };
 };
