@@ -4,7 +4,7 @@ import { lazy } from 'react';
 const MainPage = lazy(() => import('@/pages/main'));
 const VendorsPage = lazy(() => import('@/pages/vendors'));
 
-const ROUTES = {
+export const ROUTES = {
     MAIN: '/',
     VENDORS: '/vendors',
 };

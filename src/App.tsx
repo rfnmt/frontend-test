@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import { router } from '@/routes';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { store } from '@/store';
 import { setLatAndLong } from '@/store/user/slice';
 import Layout from '@/shared/Layout';
@@ -13,7 +13,9 @@ function App() {
 
     return (
         <Layout>
-            <RouterProvider router={router} />;
+            <Suspense fallback={<div>Loading...</div>}>
+                <RouterProvider router={router} />
+            </Suspense>
         </Layout>
     );
 }
