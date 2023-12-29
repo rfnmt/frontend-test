@@ -83,7 +83,7 @@ export default function Vendors() {
                                     ? 235
                                     : 0
                             }
-                            width={window?.innerWidth}
+                            width={400}
                             style={{ direction: 'rtl' }}
                         >
                             {Item}

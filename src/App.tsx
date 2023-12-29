@@ -1,8 +1,9 @@
 import { RouterProvider } from 'react-router-dom';
-import { router } from './routes';
+import { router } from '@/routes';
 import { useEffect } from 'react';
-import { store } from './store';
-import { setLatAndLong } from './store/user/slice';
+import { store } from '@/store';
+import { setLatAndLong } from '@/store/user/slice';
+import Layout from '@/shared/Layout';
 
 function App() {
     useEffect(() => {
@@ -10,7 +11,11 @@ function App() {
         store.dispatch(setLatAndLong({ lat: '35.754', long: '51.328' }));
     }, []);
 
-    return <RouterProvider router={router} />;
+    return (
+        <Layout>
+            <RouterProvider router={router} />;
+        </Layout>
+    );
 }
 
 export default App;
