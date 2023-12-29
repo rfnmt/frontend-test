@@ -4,6 +4,7 @@ import { Suspense, useEffect } from 'react';
 import { store } from '@/store';
 import { setLatAndLong } from '@/store/user/slice';
 import Layout from '@/shared/Layout';
+import { ErrorBoundary } from './shared/ErrorBoundary';
 
 function App() {
     useEffect(() => {
@@ -12,11 +13,13 @@ function App() {
     }, []);
 
     return (
-        <Layout>
-            <Suspense fallback={<div>Loading...</div>}>
-                <RouterProvider router={router} />
-            </Suspense>
-        </Layout>
+        <ErrorBoundary>
+            <Layout>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <RouterProvider router={router} />
+                </Suspense>
+            </Layout>
+        </ErrorBoundary>
     );
 }
 
