@@ -11,7 +11,12 @@ export interface VendorDetails {
     description: string;
     rate: number;
     logo: string;
-    coverPath: string;
     deliveryFee: number;
     countReview: number;
+    backgroundImage: string;
+}
+
+export interface ResultItem {
+    type: 'VENDOR' | 'TEXT';
+    data: ResultItem['type'] extends 'TEXT' ? string : VendorDetails;
 }
