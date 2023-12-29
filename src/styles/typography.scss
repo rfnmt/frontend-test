@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;600;800&display=swap');
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.text-title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.text-normal {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.text-bold-1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.color-gray-light {
+    color: var(--color-gray-light);
+}
+
+.color-gray-dark {
+    color: var(--color-gray);
+}

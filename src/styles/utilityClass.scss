@@ -1,0 +1,56 @@
+// Display
+.flex {
+    display: flex;
+}
+
+.ai-center {
+    align-items: center;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+.jc-between {
+    justify-content: space-between;
+}
+
+// Width & Height
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+// Position
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+// Color
+.bg-gray-ultralight {
+    background-color: var(--color-gray-ultralight);
+}
+
+.bg-white {
+    background-color: var(--color-white);
+}
+
+// Border
+.border-ultralight {
+    border: 1px solid var(--color-gray-ultralight);
+}
+
+.radius-8 {
+    border-radius: 8px;
+}
+
+.radius-rounded {
+    border-radius: 50%;
+}
