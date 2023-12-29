@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react';
 
-interface useAPIArgs<T> {
-    requestFunction: (data: T) => Promise<unknown>;
+interface useAPIArgs<T, K> {
+    requestFunction: (data: T) => Promise<K>;
     requestData: T;
     fireOnLoad?: boolean;
 }
 
-export const useAPI = <T>({
+export const useAPI = <T, K>({
     requestData,
     requestFunction,
     fireOnLoad,
-}: useAPIArgs<T>) => {
+}: useAPIArgs<T, K>) => {
     const [loading, setLoading] = useState(false);
-    const [result, setResult] = useState<unknown>();
+    const [result, setResult] = useState<K>();
 
-    function request(data: T): Promise<unknown> {
+    function request(data: T): Promise<K> {
         setLoading(true);
         return new Promise(function (resolve, reject) {
             requestFunction(data)
-                ?.then((response: unknown) => {
+                ?.then((response: K) => {
                     resolve(response);
                 })
-                ?.catch((error: unknown) => {
+                ?.catch((error: K) => {
                     reject(error);
                 })
                 .finally(() => {
