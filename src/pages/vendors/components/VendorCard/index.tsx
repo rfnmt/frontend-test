@@ -9,6 +9,9 @@ interface Props extends VendorDetails {
     className?: string;
 }
 
+const getDeliveryFee = (fee: number) =>
+    fee > 0 ? `${toFa(formatNumberWithCommas(fee))} تومان` : 'رایگان';
+
 export default function VendorCard({
     className,
     logo,
@@ -18,6 +21,7 @@ export default function VendorCard({
     description,
     rate,
     title,
+    deliveryTime,
 }: Props) {
     return (
         <div className={clsx('p-2', className)}>
@@ -60,9 +64,13 @@ export default function VendorCard({
 
             <p className='text-normal mt-1'>{description}</p>
 
-            <p className='text-normal mt-1'>{`پیک رستوران: ${toFa(
-                formatNumberWithCommas(deliveryFee),
-            )} تومان`}</p>
+            <div className='flex jc-between'>
+                <p className='text-normal mt-1'>{`پیک رستوران: ${getDeliveryFee(
+                    deliveryFee,
+                )}`}</p>
+
+                {deliveryTime > 0 && <p>{`تا ${toFa(deliveryTime)} دقیقه`}</p>}
+            </div>
         </div>
     );
 }

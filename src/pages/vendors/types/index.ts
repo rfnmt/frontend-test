@@ -14,6 +14,7 @@ export interface VendorDetails {
     deliveryFee: number;
     countReview: number;
     backgroundImage: string;
+    deliveryTime: number;
 }
 
 export interface ResultItem {

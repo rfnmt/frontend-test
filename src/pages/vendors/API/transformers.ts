@@ -9,6 +9,7 @@ const transformVendor = (vendor: any): VendorDetails => ({
     deliveryFee: vendor.deliveryFee,
     countReview: vendor.countReview,
     backgroundImage: vendor.backgroundImage,
+    deliveryTime: vendor.deliveryTime,
 });
 
 export const getVendorsListTransformer = (data: any) => ({
